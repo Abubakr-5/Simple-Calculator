@@ -56,7 +56,10 @@ answerDisplay.innerText = answerValue;
 
 //     MODULES
 function pressedNumber(value) {
-    equationDisplay.innerText == "Ans" && !operatorSelected ? equationDisplay.innerText = "" : null;
+    if (equationDisplay.innerText == "Ans" && !operatorSelected) {
+        firstNumber = 0;
+        equationDisplay.innerText = "";
+    }
     if (operatorSelected) {
         if (dotSelected) {
             value *= Math.pow(0.1, decimalplace);
@@ -128,9 +131,15 @@ function clearDisplay() {
     answerDisplay.innerText = 0;
 }
 function updateEquationDisplay(value) {
-    if (value == "." || value == "+" || value == "-" || value == "*" || value == "/") {
+    if (value == "+" || value == "-" || value == "*" || value == "/") {
         equationDisplay.innerText += value;
-    }else if(value == "Ans"){
+    } 
+    // else if (value == "."){
+    //     if (equationDisplay.innerText == "Ans" || equationDisplay.innerText == "0") {
+    //         equationDisplay.innerText = "0.";
+    //     }
+    // } 
+    else if(value == "Ans"){
         equationDisplay.innerText = "Ans";
     } else {
         equationDisplay.innerText == "0" ? equationDisplay.innerText = "" : null;
@@ -163,7 +172,7 @@ function calculate() {
         }
         firstNumber = answerValue;
     } else {
-        answerValue = firstNumber;
+        // answerValue = firstNumber;
     }
     secondNumber = 0;
     operatorSelected = false;
